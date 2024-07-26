@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode Example</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Light Mode */
+        :root {
+          --background-color: #ffffff;
+          --text-color: #000000;
+          --primary-color: #1e90ff;
+          --secondary-color: #ff6347;
+          --green-color: rgb(57, 181, 74);
+        
+          --gray-color: gray;
+          --white-smoke-color: #fafafa;
+          --off-white: #fcfcfc;
+          --light-slate-gray: #b7c2c2;
+          --charcoal: #333333;
+          --light-silver: #fofofo;
+          --light-gray: #bfbfbf;
+          --dim-gray: #4d4d4d;
+          --success-green: #5cb85c;
+          --cyan: #5bc0de;
+        }
+        
+        /* Dark Mode */
+        [data-theme="dark"] {
+          --background-color: #121212;
+          --gray-color: rgb(197, 18, 18);
+          --text-color: #ffffff;
+          --green-color: rgb(57, 181, 74);
+          --primary-color: #bb86fc;
+          --secondary-color: #03dac6;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        p {
+            color: var(--text-color);
+        }
+
+        .content {
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+        }
+
+        #theme-toggle {
+            padding: 10px;
+            margin: 20px;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        #theme-toggle:hover {
+            background-color: var(--secondary-color);
+        }
+
+        #theme-toggle i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="theme-toggle">
+        <i class="fas fa-sun"></i> <!-- Light mode icon -->
+        Toggle Dark Mode
+    </button>
+
+    <div class="content">
+        <h1>This is a heading</h1>
+        <p>Some text content here.</p>
+    </div>
+
+    <script>
+        // JavaScript to handle the toggle
+        const themeToggle = document.getElementById('theme-toggle'); 
+        const html = document.documentElement; 
+        const icon = themeToggle.querySelector('i');
+
+        themeToggle.addEventListener('click', () => {
+            if (html.dataset.theme === 'dark') {
+                html.dataset.theme = 'light'; 
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                html.dataset.theme = 'dark'; 
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Initialize the icon based on the current theme
+        if (html.dataset.theme === 'dark') {
+            icon.classList.add('fa-moon');
+            icon.classList.remove('fa-sun');
+        }
+    </script>
+
+</body>
+
+</html>
